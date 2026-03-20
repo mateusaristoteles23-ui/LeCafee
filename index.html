@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Italianno&family=Montserrat:wght@300;400&family=Playfair+Display:wght@600&family=Oswald:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #F5F5DC;
+            s
+        }
+
+        /* CORREÇÃO: Faltava a vírgula aqui */
+        .navbar-brand {
+            font-family: 'Italianno', cursive;
+            font-size: 2.5rem;
+            padding: 0;
+            /* Aumentei um pouco porque essa fonte é fina */
+        }
+
+        /* Estilo do Card com Elevação */
+        .card {
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 15px 30px rgba(44, 30, 22, 0.2);
+            cursor: pointer;
+        }
+
+        .card img {
+            height: 300px;
+            /* Altura fixa para todos */
+            object-fit: cover;
+            /* Corta a imagem sem esticar para preencher o espaço */
+            width: 100%;
+        }
+
+        #cardapio {
+            background-color: transparent !important;
+        }
+
+        .titulo-padrao {
+            font-family: 'Oswald', 'serif';
+            color: #2C1E16;
+            text-transform: uppercase;
+            font-size: 35px;
+            margin-top: -15px;
+        }
+
+        .custom-nav {
+            background: rgba(43, 24, 16, 0.8) !important;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .carousel-item::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5));
+            z-index: 1;
+        }
+
+        .carousel-control-prev,
+        .carousel-control-next,
+        .carousel-item .container,
+        .carousel-item .position-absolute {
+            z-index: 5 !important;
+        }
+
+        .titulo-gourmet,
+        .carousel-item h1,
+        .carousel-item h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: #F8F5E6;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .subtitulo-gourmet,
+        .carousel-item p {
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 300;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .btn-gourmet {
+            background-color: transparent !important;
+            border: 1px solid #D4A373 !important;
+            color: #F8F5E6 !important;
+            padding: 12px 30px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-gourmet:hover {
+            background-color: #D4A373 !important;
+            color: #fff !important;
+            transform: translateY(-3px);
+        }
+
+        .divisor-cafe {
+            border: none;
+            border-top: 2px solid #D4A373;
+            opacity: 0.4;
+            width: 85%;
+            margin: 60px auto;
+        }
+
+        .btn-padrao {
+            background: #8B5E3C;
+            color: white;
+            border: nome;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: 8px;
+            transition: 0.3s;
+        }
+
+        .btn-padrao:hover {
+            background: #6f472d;
+            transform: scale(1.05);
+            color: #F8F5E6;
+            ;
+        }
+
+        .formulario {
+            flex: 2;
+        }
+
+        .info {
+            flex: 1;
+            /* padding-left: 30px; */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top custom-nav navbar-dark">
+        <div class="container">
+            <a class="navbar-brand nav-text" href="#">Le Café</a>
+
+            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs- target="#menu">
+
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a href="#" class="nav-link">Início</a>
+                    </li>
+                    <li class="nav-item"><a href="#sobre" class="nav-link">Sobre</a></li>
+                    <li class="nav-item"><a href="#cardapio" class="nav-link">Cardápio</a></li>
+                    <li class="nav-item"><a href="#contato" class="nav-link">Contato</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Carrossel -->
+    <div id="carouselExample" class="carousel slide">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="img/coffe_2.jpg" class="d-block w-100" alt="img_coffe" height="800">
+                <div class="position-absolute top-50 translate-middle-y text-white" style="right: 200px;">
+
+                    <h2 class="fw-bold">Do grão ao coração.</h2>
+                    <p>Mais que café, uma experiência.</p>
+                    <a href="#cardapio" class="btn btn-gourmet mt-2">Ver Cardápio</a>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="img/latte.jpg" class="d-block w-100" alt="milkshake" height="800">
+                <div class="position-absolute top-0 start-0 w-100 h-100" style="background: rgba(0,0,0,0.3);"></div>
+                <div class="position-absolute top-50 translate-middle-y text-white" style="left: 200px;">
+
+                    <h2 class="fw-bold">Sabores que aquecem seu dia</h2>
+                    <a href="#cardapio" class="btn btn-gourmet mt-2">Ver Cardápio</a>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="img/ambient.jpg" class="d-block w-100" alt="ambiente" height="800" style="object-fit: cover;">
+
+                <div class="position-absolute top-0 start-0 w-100 h-100" style="background: rgba(0,0,0,0.5);"></div>
+
+                <div class="container position-absolute top-50 start-50 translate-middle text-center">
+                    <h1 class="titulo-gourmet mb-3">
+                        O ENCONTRO PERFEITO<br>DO SABOR E DA LUZ
+                    </h1>
+                    <p class="subtitulo-gourmet mb-4">
+                        Uma experiência única em cada xícara,<br>na atmosfera que você merece.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    <!-- Cardápio -->
+    <section id="cardapio" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="mb-4 titulo-padrao">Nosso Cardápio</h2>
+            <div class="row g-4">
+                <div class="col-12 col-md-4">
+                    <div class="card h-100"> <img src="img/expresso (2).jpg" alt="expresso">
+                        <div class="card-body text-center">
+                            <h5>Expresso</h5>
+                            <p>Blend exclusivo de grãos 100% arábica.</p>
+                            <p class="fw-bold">R$ 7,00</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-4">
+                    <div class="card h-100">
+                        <img src="img/cappu.jpg" alt="Cappuccino">
+                        <div class="card-body text-center">
+                            <h5>Cappuccino</h5>
+                            <p>O equilíbrio perfeito entre café, leite e crema.</p>
+                            <p class="fw-bold">R$ 12,00</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-4">
+                    <div class="card h-100">
+                        <img src="img/ice_coffe.jpg" alt="Café Gelado">
+                        <div class="card-body text-center">
+                            <h5>Café Gelado</h5>
+                            <p>Extração a frio com cubos de gelo cristalinos.</p>
+                            <p class="fw-bold">R$ 14,00</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-4">
+                    <div class="card h-100">
+                        <img src="img/icetea.jpg" alt="Chá Gelado">
+                        <div class="card-body text-center">
+                            <h5>Chá Gelado</h5>
+                            <p>Infusão natural de hibisco com limão siciliano.</p>
+                            <p class="fw-bold">R$ 11,00</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-4">
+                    <div class="card h-100">
+                        <img src="img/achocolatado.jpg" alt="Achocolatado">
+                        <div class="card-body text-center">
+                            <h5>Achocolatado</h5>
+                            <p>Chocolate belga derretido no leite vaporizado.</p>
+                            <p class="fw-bold">R$ 10,00</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-4">
+                    <div class="card h-100">
+                        <img src="img/mocca_2.jpg" alt="Mocca">
+                        <div class="card-body text-center">
+                            <h5>Mocca</h5>
+                            <p>Camadas de calda de chocolate, expresso e leite.</p>
+                            <p class="fw-bold">R$ 15,00</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    </section>
+    <!-- Divisor -->
+    <hr class="divisor-cafe"">
+    <!-- Sobre -->
+   <section id=" sobre" class="py-5">
+    <div class="container">
+        <h2 class="titulo-padrao" color: #2C1E16;">
+            Sobre Nós
+        </h2>
+
+        <div class="row align-items-center g-5">
+
+            <div class="col-md-6 order-2 order-md-1">
+                <p class="mb-4 text-justify"
+                    style="font-family: 'Montserrat', sans-serif; line-height: 1.9; color: #4A3B33; font-size: 1.05rem;">
+                    "No coração da cidade, o <strong>Le Café</strong> nasceu de um propósito simples, mas profundo:
+                    transformar o hábito de beber café em um ritual de prazer. Acreditamos que cada grão carrega uma
+                    história, desde as fazendas de altitude até a sua xícara."
+                </p>
+
+                <p class="mb-4 text-justify"
+                    style="font-family: 'Montserrat', sans-serif; line-height: 1.9; color: #4A3B33;">
+                    "Nossa curadoria seleciona apenas grãos 100% arábica, torrados artesanalmente para preservar notas
+                    sensoriais únicas. Aqui, o tempo corre mais devagar. Seja para um expresso rápido que desperta a
+                    alma ou um cappuccino cremoso que abraça a tarde, o <strong>Le Café</strong> é o seu refúgio
+                    particular. Entre, sinta o aroma e descubra que o café perfeito é aquele compartilhado com bons
+                    momentos."
+                </p>
+            </div>
+
+            <div class="col-md-6 text-center order-1 order-md-2">
+                <div class="position-relative">
+                    <img src="img/quem_somos2.jpg" class="img-fluid shadow-lg" alt="A alma do Le Café"
+                        style="border: 12px solid #fff; object-fit: cover; aspect-ratio: 1/1;">
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+    <!-- Divisor -->
+    <hr class="divisor-cafe"">
+    <!-- Contato -->
+    <section id=" contato" class="py-5">
+    <div class="container">
+        <h2 class="titulo-padrao mb-5">Entre em Contato</h2>
+        <div class="row align-items-start g-4">
+            <div class="col-md-8">
+                <form>
+                    <div class="mb-3">
+                        <input type="text" class="form-control" placeholder="Seu nome">
+                    </div>
+                    <div class="mb-3">
+                        <input type="email" class="form-control" placeholder="Seu e-mail">
+                    </div>
+                    <div class="mb-3">
+                        <textarea class="form-control" rows="4" placeholder="Sua mensagem"></textarea>
+                    </div>
+                    <button class="btn btn-padrao">Enviar</button>
+                </form>
+            </div>
+            <div class="col-md-5 info">
+                <h5>📍 Onde estamos</h5>
+                <p>Rua das Flores, 123 - Centro</p>
+                <h5>📞 Telefone</h5>
+                <p>(11) 1234-5678</p>
+                <h5>⏰ Horário</h5>
+                <p>Seg-Sáb: 8h às 20h</p>
+
+            </div>
+        </div>
+    </div>
+    </section>
+    <!-- Rodapé -->
+    <footer class="bg-dark text-white text-center py-3">
+        <p class="mb-0">© 2024 Café Gourmet - Todos os direitos reservados</p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstr
+ap.bundle.min.js"></script>
+</body>
+
+</html>
